@@ -1,0 +1,6 @@
+name: BombingRun
+main: com.frogman786.BombingRun.Main
+version: 0.0
+commands:
+  bombingrun:
+    description: the main command for the game
