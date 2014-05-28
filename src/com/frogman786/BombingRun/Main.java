@@ -13,9 +13,10 @@ import org.bukkit.plugin.Plugin;
 public class Main extends JavaPlugin{
    
     private static Plugin plugin;
-    public static Map<String, String> replymap = new HashMap<String, String>();
+    public static Map<String, String> lobbylist = new HashMap<String, String>();
+    public static Map<String, String> Ingame = new HashMap<String, String>();
     public static Map<String, String> configmap = new HashMap<String, String>();
-    public static Map<String,Boolean> rainbowmap = new HashMap<String, Boolean>();
+    public static String ballholder = null;
 	
     public void onEnable() {
         plugin = this;
