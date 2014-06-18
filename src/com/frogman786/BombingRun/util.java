@@ -1,10 +1,11 @@
 package com.frogman786.BombingRun;
 
 
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -51,16 +52,27 @@ public class util {
 		//firing ball
 
 		Item dropped = (Item) p.getWorld().spawnEntity(p.getLocation(), EntityType.DROPPED_ITEM);
+		dropped.setVelocity(new Vector(0, 0.4, 0));// this should work maybe hoping it will shoot the ball 4 blocks high or so when it's dropped
 	}
 	public static void Broadcast(String team, String message){
 		if(team.equalsIgnoreCase("all")){
-
+			for(Map.Entry<String, String> entry:Main.Ingame.entrySet()){
+				Bukkit.getPlayer(entry.getKey()).sendMessage(message);
+			}
 		}
 		if(team.equalsIgnoreCase("red")){
-			
+			for(Map.Entry<String, String> entry:Main.Ingame.entrySet()){
+				if(entry.getValue().equalsIgnoreCase("red")){
+					Bukkit.getPlayer(entry.getKey()).sendMessage(message);
+				}
+			}
 		}
 		if(team.equalsIgnoreCase("blue")){
-			
+			for(Map.Entry<String, String> entry:Main.Ingame.entrySet()){
+				if(entry.getValue().equalsIgnoreCase("blue")){
+					Bukkit.getPlayer(entry.getKey()).sendMessage(message);
+				}
+			}
 		}
 	}
 }

@@ -1,0 +1,37 @@
+bombingrun basic plan v0.0
+
+start game system
+  - player uses join command
+  - tp to lobby
+  - save inv/clear (froggles hook)
+  - check if enough players for auto start (if true start count down)
+  - count down complete (tp into game, spawn ball, turn on game boolean)
+  
+  
+
+config basic layout
+
+//all setting can be set using /br admin <blah blah blah>
+locations:
+  lobby: "world,x,y,z,pitch,yaw" //all locations load as a string and then get split into a Location object
+  ball: "world,x,y,z"
+  red:
+    - "world,x,y,z,pitch,yaw"
+    - etc.
+  blue:
+    - "world,x,y,z,pitch,yaw"
+    - etc.
+
+times:
+  lobbytime: (int of seconds)
+  gametime: (same thing)
+  ballrespawntime: 20
+
+players:
+  min: (minimum for autostart to function(probably 6))
+  max: (maximum total player in game(24?))
+  force: (minimum for a force started game using /br force(probably 2))
+
+  
+  
+
