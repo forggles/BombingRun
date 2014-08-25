@@ -8,6 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitScheduler;
+
+import com.frogman786.BombingRun.Scheduled;
 
  
 public class Main extends JavaPlugin{
@@ -23,6 +26,7 @@ public class Main extends JavaPlugin{
         registerEvents(this, new Events());
         configini();
         commandini();
+        scheduleini();
     }
    
     public void onDisable() {
@@ -41,19 +45,24 @@ public class Main extends JavaPlugin{
     	FileConfiguration config = getConfig();
 		config.options().copyDefaults(true);
 		saveConfig();
-		for(String str: getConfig().getKeys(true)) {
-			 
-			String p = getConfig().getString(str);
-			 
-			configmap.put(str, p);
+		for(String word: getConfig().getStringList("ranks")){
+			//map/array.add(word);
 		}
     }
     
     private void commandini(){
-    	//gamemode
     	getCommand("bombingrun").setExecutor(new maincommand());
     }
-   
+   private void scheduleini(){
+	   BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+       scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
+           @Override
+           public void run() {
+        	   Scheduled.count();
+        	   Scheduled.execute();
+           }
+       }, 0L, 20L);
+   }
    
    
  

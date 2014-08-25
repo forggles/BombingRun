@@ -20,7 +20,7 @@ public class Events implements Listener {
 			attacker = (Player) evt.getDamager();
 			damaged = (Player) evt.getEntity();
 		}
-		if
+		
 		Bukkit.broadcastMessage(attacker.getName() + " hit " + damaged.getName());
 	}
 }
